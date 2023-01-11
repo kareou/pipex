@@ -1,14 +1,11 @@
 #include "pipex.h"
 
-void free_array(char **a)
+void free_array(char **a, int i, int stop)
 {
-    int i;
-
-    while (a[i])
+    while (i <= stop)
     {
         free(a[i]);
         i++;
     }
     free(a);
-    a[i] = NULL;
 }

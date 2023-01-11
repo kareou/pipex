@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:33:36 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 12:19:09 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:30:42 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ char	*check_path(char *cmd, char *const *env)
 	{
 		a[i] = ft_strjoin(a[i], "/");
 		tmp = ft_strjoin(a[i], cmd);
+		free(a[i]);
 		if (access(tmp, F_OK) == 0)
 		{
-			free_array(a);
+			free_array(a, i + 1, c_count(ev,':'));
 			return (tmp);
 		}
-		free(a[i]);
 		free(tmp);
 	}
-	a = NULL;
+	free(a);
 	return (NULL);
 }
 

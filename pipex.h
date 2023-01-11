@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 12:09:46 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/10 16:44:32 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:02:55 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	in_out_rederect_chil(char **av, int fd, int fds);
 void	cmd_execute(char *a, char **cmd, char *const *env);
 
 //
-void free_array(char **a);
+void free_array(char **a,int i, int stop);
+int	c_count(const char *s, const char c);
 
 #endif
