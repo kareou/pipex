@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:33:36 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 10:51:17 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:19:09 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ char	*check_path(char *cmd, char *const *env)
 			free_array(a);
 			return (tmp);
 		}
+		free(a[i]);
 		free(tmp);
 	}
-	free(a);
+	a = NULL;
 	return (NULL);
 }
 
@@ -97,27 +98,6 @@ char	*copy(char *a)
 		i++;
 	}
 	re[j] = '\0';
-	return (re);
-}
-
-char	*copy2(char *a)
-{
-	int		i;
-	int		j;
-	char	*re;
-
-	i = 0;
-	j = 0;
-	re = malloc(ft_strlen(a));
-	while (i < (int)ft_strlen(a))
-	{
-		if (a[i] != 92)
-		{
-			re[j] = a[i];
-			j++;
-		}
-		i++;
-	}
-	re[j] = '\0';
+	free(a);
 	return (re);
 }

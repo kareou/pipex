@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:13:55 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/10 16:54:33 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:17:27 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ char	**ft_split(char const *s, char c)
 	init(&i, &j, &trgr);
 	a = (char **)malloc(sizeof(char *) * (c_count(s, c) + 1));
 	if (a == NULL)
+	{
+		free(a);
 		return (NULL);
+	}
 	while (s[i])
 	{
 		trgr = i;
@@ -66,6 +69,5 @@ char	**ft_split(char const *s, char c)
 			i++;
 	}
 	a[j] = NULL;
-	s = NULL;
 	return (a);
 }

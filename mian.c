@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:11:29 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 10:51:27 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:25:28 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,18 @@ void	childe(char **av, char *const *env, int fd, int fds)
 		cmd[0] = handel(cmd[0]);
 		a = check_path(cmd[0], env);
 	}
-	while(1)
+	if (fork() == 0)
 	{
-		i++;
+		free(a);
+		free(cmd);
+		exit(0);
 	}
+	// while(1)
+	// {
+	// 	i++;
+	// }
+	else
+		cmd_execute(a, cmd, env);
 	cmd_execute(a, cmd, env);
 }
 
@@ -71,11 +79,18 @@ void	parrent(char **av, char *const *env, int fd, int fds)
 		cmd[0] = handel(cmd[0]);
 		a = check_path(cmd[0], env);
 	}
-	while(1)
+	if (fork() == 0)
 	{
-		i++;
+		free(a);
+		free(cmd);
+		exit(0);
 	}
-	cmd_execute(a, cmd, env);
+	// while(1)
+	// {
+	// 	i++;
+	// }
+	else
+		cmd_execute(a, cmd, env);
 }
 
 void	start(char **av, char *const *env)
