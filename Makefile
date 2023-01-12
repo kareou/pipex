@@ -14,7 +14,6 @@ SRC = mian.c\
 	outils.c\
 	outils2.c\
 	cmd_handel.c\
-	free.c\
 
 OBJ = $(SRC:.c=.o)
 

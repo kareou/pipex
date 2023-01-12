@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:13:55 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 12:37:38 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:43:50 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,14 @@ char	**ft_split(char const *s, char c)
 	}
 	a[j] = NULL;
 	return (a);
+}
+
+void	free_array(char **a, int i, int stop)
+{
+	while (i <= stop)
+	{
+		free(a[i]);
+		i++;
+	}
+	free(a);
 }

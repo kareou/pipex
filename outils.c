@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:33:36 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 13:30:42 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:54:42 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,31 @@ char	*find_paths(char *const *env)
 	return (paths);
 }
 
-char	*check_path(char *cmd, char *const *env)
+char	*check_path(char *cmd, char *const *env, int i)
 {
-	int		i;
 	char	*ev;
 	char	**a;
 	char	*tmp;
+	char	*s;
 
-	i = -1;
 	ev = find_paths(env);
 	if (ev == NULL)
 		exit_proc(ft_strjoin("pipex: ", cmd), 0);
 	a = ft_split(ev, ':');
 	while (a[++i])
 	{
-		a[i] = ft_strjoin(a[i], "/");
+		s = a[i];
+		a[i] = ft_strjoin(s, "/");
+		free(s);
 		tmp = ft_strjoin(a[i], cmd);
 		free(a[i]);
 		if (access(tmp, F_OK) == 0)
 		{
-			free_array(a, i + 1, c_count(ev,':'));
+			free_array(a, i + 1, c_count(ev, ':'));
 			return (tmp);
 		}
 		free(tmp);
 	}
-	free(a);
 	return (NULL);
 }
 

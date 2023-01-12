@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:11:29 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 13:34:15 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:54:53 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	childe(char **av, char *const *env, int fd, int fds)
 {
 	char	**cmd;
 	char	*a;
-	int i = 1;
 
 	in_out_rederect_chil(av, fd, fds);
 	if (av[2][0] == 47 || (av[2][0] == '.' && av[2][1] == 47) || access(av[2],
@@ -35,13 +34,8 @@ void	childe(char **av, char *const *env, int fd, int fds)
 	{
 		cmd = command_check(av[2]);
 		cmd[0] = handel(cmd[0]);
-		a = check_path(cmd[0], env);
+		a = check_path(cmd[0], env, -1);
 	}
-	// while(1)
-	// {
-	// 	i++;
-	// }
-	cmd_execute(a, cmd, env);
 	cmd_execute(a, cmd, env);
 }
 
@@ -49,7 +43,6 @@ void	parrent(char **av, char *const *env, int fd, int fds)
 {
 	char	**cmd;
 	char	*a;
-	int i = 1;
 
 	in_out_rederect_par(av, fd, fds);
 	if (av[3][0] == 47 || (av[3][0] == '.' && av[3][1] == 47))
@@ -70,12 +63,8 @@ void	parrent(char **av, char *const *env, int fd, int fds)
 	{
 		cmd = command_check(av[3]);
 		cmd[0] = handel(cmd[0]);
-		a = check_path(cmd[0], env);
+		a = check_path(cmd[0], env, -1);
 	}
-	// while(1)
-	// {
-	// 	i++;
-	// }
 	cmd_execute(a, cmd, env);
 }
 
