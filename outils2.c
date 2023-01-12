@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:47:15 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/12 15:05:59 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:24:07 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ char	*exit_proc(char *a, int i)
 	}
 	else
 	{
-		s = ft_strjoin(a, ": command not found\n");
+		s = ft_strjoin("pipex: ", a);
+		s = ft_strjoin(s, ": command not found\n");
 		write(2, s, ft_strlen(s));
 		free(a);
 		free(s);
