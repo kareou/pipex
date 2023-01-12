@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 12:09:46 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 16:54:36 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:41:18 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 # define DEF "\033[0m"

@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:11:29 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 16:54:53 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:41:30 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ void	parrent(char **av, char *const *env, int fd, int fds)
 	if (av[3][0] == 47 || (av[3][0] == '.' && av[3][1] == 47))
 	{
 		if (access(av[3], F_OK | X_OK) != 0)
-		{
-			perror(ft_strjoin("pipex :", av[3]));
-			exit(0);
-		}
+			exit_proc(ft_strjoin("pipex :", av[3]), 1);
 		else
 		{
 			cmd = command_check(av[3]);

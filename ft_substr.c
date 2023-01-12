@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:55:40 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/10 16:12:57 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:50:22 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (0);
-	j = strlen(s);
+	j = ft_strlen((char *)s);
 	a = (char *)malloc(len + 1);
 	if (!a)
 		return (NULL);

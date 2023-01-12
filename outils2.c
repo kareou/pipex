@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:47:15 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 12:10:20 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:42:39 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,15 @@ char	*exit_proc(char *a, int i)
 	if (i == 1)
 	{
 		perror(a);
+		free(a);
 		exit(0);
 	}
 	else
 	{
 		s = ft_strjoin(a, ": command not found\n");
-		write(2, s, strlen(s));
+		write(2, s, ft_strlen(s));
+		free(a);
+		free(s);
 		exit(127);
 	}
 }
@@ -84,7 +87,7 @@ char	*handel(char *a)
 	char	*s;
 
 	i = 0;
-	s = malloc(strlen(a));
+	s = malloc(ft_strlen(a));
 	while (a[i])
 	{
 		if (a[i] == ' ')

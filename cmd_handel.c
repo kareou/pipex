@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:24:27 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/11 11:40:38 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:00:11 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ void	in_out_rederect_par(char **av, int fd, int fds)
 
 void	in_out_rederect_chil(char **av, int fd, int fds)
 {
-	int	input;
+	int		input;
+	char	*a;
 
 	input = open(av[1], O_RDONLY);
 	if (input == -1)
 	{
-		perror(ft_strjoin("pipex: ", av[1]));
+		a = ft_strjoin("pipex: ", av[1]);
+		perror(a);
+		free(a);
 		exit(0);
 	}
 	dup2(input, STDIN_FILENO);
@@ -48,11 +51,24 @@ void	cmd_execute(char *a, char **cmd, char *const *env)
 	int	i;
 
 	if (access(a, X_OK) != 0)
+	{
+		free_array(cmd,1,array_len(cmd));
 		exit_proc(ft_strjoin("pipex: ", cmd[0]), 0);
+	}
 	i = execve(a, cmd, env);
 	if (i == -1)
 	{
 		free(a);
+		free_array(cmd, 0, array_len(cmd));
 		exit(126);
 	}
+}
+
+int	array_len(char **a)
+{
+	int	i;
+
+	while (a[i])
+		i++;
+	return (i);
 }
