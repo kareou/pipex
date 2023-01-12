@@ -6,7 +6,7 @@
 /*   By: mkhairou <mkhairou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:24:27 by mkhairou          #+#    #+#             */
-/*   Updated: 2023/01/12 15:00:11 by mkhairou         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:05:13 by mkhairou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	cmd_execute(char *a, char **cmd, char *const *env)
 
 	if (access(a, X_OK) != 0)
 	{
-		free_array(cmd,1,array_len(cmd));
 		exit_proc(ft_strjoin("pipex: ", cmd[0]), 0);
+		free_array(cmd,0,array_len(cmd));
 	}
 	i = execve(a, cmd, env);
 	if (i == -1)
